@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import 'package:news_app_clean_architecture/features/products/presentation/bloc/article/remote/remote_products_bloc.dart';
+import 'package:products_app_clean_architecture/features/products/presentation/bloc/article/remote/remote_products_bloc.dart';
 
 import 'features/products/data/repository/products_repository_impl.dart';
 import 'features/products/data/sources/remote/products_api_service.dart';

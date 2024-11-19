@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news_app_clean_architecture/features/products/domain/usecases/get_products_use_case.dart';
-import 'package:news_app_clean_architecture/features/products/presentation/bloc/article/remote/remote_products_event.dart';
-import 'package:news_app_clean_architecture/features/products/presentation/bloc/article/remote/remote_products_state.dart';
+import 'package:products_app_clean_architecture/features/products/presentation/bloc/article/remote/remote_products_event.dart';
+import 'package:products_app_clean_architecture/features/products/presentation/bloc/article/remote/remote_products_state.dart';
+
 
 import '../../../../../../core/resources/data_state.dart';
+import '../../../../domain/usecases/get_products_use_case.dart';
 
 class RemoteProductsBloc extends Bloc<RemoteProductsEvent, RemoteProductsState> {
   final GetProductsUseCase _getProductsUseCase;

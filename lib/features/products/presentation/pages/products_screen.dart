@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news_app_clean_architecture/features/products/presentation/bloc/article/remote/remote_products_bloc.dart';
-import 'package:news_app_clean_architecture/features/products/presentation/widgets/products_widget.dart';
+import 'package:products_app_clean_architecture/features/products/presentation/bloc/article/remote/remote_products_bloc.dart';
+import 'package:products_app_clean_architecture/features/products/presentation/widgets/products_widget.dart';
 
 import '../bloc/article/remote/remote_products_state.dart';
 

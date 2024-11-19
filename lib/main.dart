@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news_app_clean_architecture/features/products/presentation/bloc/article/remote/remote_products_bloc.dart';
-import 'package:news_app_clean_architecture/features/products/presentation/bloc/article/remote/remote_products_event.dart';
-import 'package:news_app_clean_architecture/features/products/presentation/pages/products_screen.dart';
-import 'package:news_app_clean_architecture/injection_container.dart';
+import 'package:products_app_clean_architecture/features/products/presentation/bloc/article/remote/remote_products_bloc.dart';
+import 'package:products_app_clean_architecture/features/products/presentation/bloc/article/remote/remote_products_event.dart';
+import 'package:products_app_clean_architecture/features/products/presentation/pages/products_screen.dart';
+import 'package:products_app_clean_architecture/injection_container.dart';
 
 import 'config/theme/app_themes.dart';
 
