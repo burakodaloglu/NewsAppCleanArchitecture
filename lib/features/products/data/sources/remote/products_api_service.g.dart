@@ -29,7 +29,7 @@ class _ProductApiService implements ProductApiService {
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<HttpResponse<List<ProductResponseModel>>>(Options(
+    final _options = _setStreamType<HttpResponse<ProductResponseModel>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,

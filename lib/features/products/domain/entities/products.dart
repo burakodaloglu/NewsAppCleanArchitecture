@@ -1,10 +1,19 @@
+import 'package:floor/floor.dart';
+
+import '../../../../core/util/rating_converter.dart';
+import '../../data/model/rating.dart';
+
+@entity
 class ProductsEntity {
+  @primaryKey
   final int id;
   final String title;
   final String description;
-  final dynamic price;
+  final double price;
   final String category;
   final String image;
+
+  @TypeConverters([RatingConverter])
   final Rating rating;
 
   ProductsEntity({
@@ -22,7 +31,7 @@ class ProductsEntity {
       id: json['id'],
       title: json['title'],
       description: json['description'],
-      price: json['price'],
+      price: json['price'].toDouble(),
       category: json['category'],
       image: json['image'],
       rating: Rating.fromJson(json['rating']),
@@ -38,29 +47,6 @@ class ProductsEntity {
       'category': category,
       'image': image,
       'rating': rating.toJson(),
-    };
-  }
-}
-class Rating {
-  final double rate;
-  final int count;
-
-  Rating({
-    required this.rate,
-    required this.count,
-  });
-
-  factory Rating.fromJson(Map<String, dynamic> json) {
-    return Rating(
-      rate: json['rate'].toDouble(),
-      count: json['count'],
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'rate': rate,
-      'count': count,
     };
   }
 }

@@ -1,3 +1,5 @@
+import 'package:products_app_clean_architecture/features/products/data/model/rating.dart';
+
 import '../../domain/entities/products.dart';
 
 class ProductResponseModel {
