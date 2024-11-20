@@ -4,17 +4,21 @@ import 'package:flutter/material.dart';
 
 import '../../domain/entities/products.dart';
 
-class ProductsWidget extends StatefulWidget {
-  final ProductsEntity? product;
+class CartWidget extends StatelessWidget {
+  final ProductsEntity product;
+  final bool isRemovable;
+  final VoidCallback? onRemove;
+  final bool isDetailsVisible;
+  final VoidCallback? onDetails;
 
-  const ProductsWidget({super.key, this.product});
-
-  @override
-  State<ProductsWidget> createState() => _ProductsWidgetState();
-}
-
-class _ProductsWidgetState extends State<ProductsWidget> {
-  bool isExpanded = false;
+  const CartWidget({
+    super.key,
+    required this.product,
+    this.isRemovable = false,
+    this.onRemove,
+    this.isDetailsVisible = false,
+    this.onDetails,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +30,9 @@ class _ProductsWidgetState extends State<ProductsWidget> {
             children: [
               _buildImage(context),
               Expanded(
-                child: _buildTitleAndDescription(context),
+                child: _buildTitleAndDetails(context),
               ),
+              if (isRemovable) _buildRemoveButton(context),
             ],
           ),
           const SizedBox(height: 16),
@@ -38,7 +43,7 @@ class _ProductsWidgetState extends State<ProductsWidget> {
 
   Widget _buildImage(BuildContext context) {
     return CachedNetworkImage(
-      imageUrl: widget.product!.image,
+      imageUrl: product.image,
       imageBuilder: (context, imageProvider) => Padding(
         padding: const EdgeInsetsDirectional.only(end: 16),
         child: ClipRRect(
@@ -49,7 +54,7 @@ class _ProductsWidgetState extends State<ProductsWidget> {
             decoration: BoxDecoration(
                 color: Colors.black.withOpacity(0.08),
                 image:
-                    DecorationImage(image: imageProvider, fit: BoxFit.cover)),
+                DecorationImage(image: imageProvider, fit: BoxFit.cover)),
           ),
         ),
       ),
@@ -77,52 +82,19 @@ class _ProductsWidgetState extends State<ProductsWidget> {
     );
   }
 
-  Widget _buildTitleAndDescription(BuildContext context) {
+  Widget _buildTitleAndDetails(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          widget.product!.title,
-          maxLines: 3,
+          product.title,
+          maxLines: 2,
           overflow: TextOverflow.ellipsis,
           style: const TextStyle(
             fontFamily: 'Mulish',
-            fontSize: 18,
-            fontWeight: FontWeight.w900,
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
             color: Colors.black87,
-          ),
-        ),
-        const SizedBox(height: 8),
-        AnimatedSize(
-          duration: const Duration(milliseconds: 300),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                isExpanded
-                    ? widget.product!.description
-                    : "${widget.product!.description.substring(0, 50)}...",
-                // İlk 50 karakteri göster
-                maxLines: isExpanded ? null : 2,
-                overflow:
-                    isExpanded ? TextOverflow.visible : TextOverflow.ellipsis,
-              ),
-              GestureDetector(
-                onTap: () {
-                  setState(() {
-                    isExpanded = !isExpanded;
-                  });
-                },
-                child: Text(
-                  isExpanded ? "Show less" : "Show more",
-                  style: const TextStyle(
-                    color: Colors.blue,
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ],
           ),
         ),
         const SizedBox(height: 8),
@@ -131,27 +103,20 @@ class _ProductsWidgetState extends State<ProductsWidget> {
           children: [
             Row(
               children: [
-                const Icon(
-                  Icons.money,
-                  size: 16,
-                ),
+                const Icon(Icons.money, size: 16),
                 const SizedBox(width: 4),
                 Text(
-                  '\$${widget.product!.price.toStringAsFixed(2)}',
+                  '\$${product.price.toStringAsFixed(2)}',
                   style: const TextStyle(fontSize: 12),
                 ),
               ],
             ),
             Row(
               children: [
-                const Icon(
-                  Icons.star_rate,
-                  size: 16,
-                  color: Colors.amber,
-                ),
+                const Icon(Icons.star_rate, size: 16, color: Colors.amber),
                 const SizedBox(width: 4),
                 Text(
-                  "${widget.product!.rating.rate}",
+                  product.rating.rate.toString(),
                   style: const TextStyle(fontSize: 12, color: Colors.black54),
                 ),
               ],
@@ -159,6 +124,13 @@ class _ProductsWidgetState extends State<ProductsWidget> {
           ],
         ),
       ],
+    );
+  }
+
+  Widget _buildRemoveButton(BuildContext context) {
+    return IconButton(
+      icon: const Icon(Icons.delete, color: Colors.red),
+      onPressed: onRemove,
     );
   }
 }

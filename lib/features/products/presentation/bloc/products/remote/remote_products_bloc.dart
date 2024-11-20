@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:products_app_clean_architecture/features/products/presentation/bloc/article/remote/remote_products_event.dart';
-import 'package:products_app_clean_architecture/features/products/presentation/bloc/article/remote/remote_products_state.dart';
+import 'package:products_app_clean_architecture/features/products/presentation/bloc/products/remote/remote_products_event.dart';
+import 'package:products_app_clean_architecture/features/products/presentation/bloc/products/remote/remote_products_state.dart';
 
 
 import '../../../../../../core/resources/data_state.dart';

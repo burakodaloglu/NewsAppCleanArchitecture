@@ -1,6 +1,6 @@
 import 'package:floor/floor.dart';
 
-import '../../../../core/util/rating_converter.dart';
+import '../../../../core/util/converter/rating_converter.dart';
 import '../../data/model/rating.dart';
 
 @entity

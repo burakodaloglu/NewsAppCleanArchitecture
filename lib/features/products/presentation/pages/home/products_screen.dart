@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:products_app_clean_architecture/features/products/presentation/bloc/article/remote/remote_products_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:products_app_clean_architecture/core/util/navigation/router.dart';
+import 'package:products_app_clean_architecture/features/products/presentation/bloc/products/remote/remote_products_bloc.dart';
 import 'package:products_app_clean_architecture/features/products/presentation/widgets/products_widget.dart';
-
-import '../bloc/article/remote/remote_products_state.dart';
+import '../../bloc/products/remote/remote_products_state.dart';
 
 class ProductsScreen extends StatelessWidget {
   const ProductsScreen({super.key});
@@ -12,17 +13,26 @@ class ProductsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _buildAppBar(),
+      appBar:_appBar(context),
       body: _buildBody(),
     );
   }
 
-  _buildAppBar() {
+  AppBar _appBar(BuildContext context) {
     return AppBar(
       title: const Text(
         "Products",
         style: TextStyle(color: Colors.black),
       ),
+      actions: [
+        IconButton(
+          onPressed: () => context.push(AppRouter.cart),
+          icon: const Icon(
+            Icons.shopping_cart_outlined,
+            color: Colors.black,
+          ),
+        )
+      ],
     );
   }
 
@@ -38,12 +48,14 @@ class ProductsScreen extends StatelessWidget {
         if (state is RemoteProductsDone) {
           return ListView.builder(
             itemBuilder: (context, index) {
-              return ProductsWidget(product: state.products![index]);
+              return GestureDetector(
+                  onTap: () => context.push(AppRouter.productsDetail,
+                      extra: state.products![index]),
+                  child: ProductsWidget(product: state.products![index]));
             },
             itemCount: state.products!.length,
           );
         }
-        // Add a default return statement to handle unexpected state types
         return const SizedBox(); // or return any other default widget
       },
     );

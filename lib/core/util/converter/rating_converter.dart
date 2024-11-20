@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:floor/floor.dart';
 
-import '../../features/products/data/model/rating.dart';
+import '../../../features/products/data/model/rating.dart';
 
 class RatingConverter extends TypeConverter<Rating, String> {
   @override
