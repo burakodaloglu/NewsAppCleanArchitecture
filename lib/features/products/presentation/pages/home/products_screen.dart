@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:products_app_clean_architecture/core/util/navigation/router.dart';
 import 'package:products_app_clean_architecture/features/products/presentation/bloc/products/remote/remote_products_bloc.dart';
+import 'package:products_app_clean_architecture/features/products/presentation/widgets/appbar_widget.dart';
 import 'package:products_app_clean_architecture/features/products/presentation/widgets/products_widget.dart';
 import '../../bloc/products/remote/remote_products_state.dart';
 
@@ -13,28 +14,11 @@ class ProductsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:_appBar(context),
+      appBar:const AppbarWidget(title: "Products"),
       body: _buildBody(),
     );
   }
-
-  AppBar _appBar(BuildContext context) {
-    return AppBar(
-      title: const Text(
-        "Products",
-        style: TextStyle(color: Colors.black),
-      ),
-      actions: [
-        IconButton(
-          onPressed: () => context.push(AppRouter.cart),
-          icon: const Icon(
-            Icons.shopping_cart_outlined,
-            color: Colors.black,
-          ),
-        )
-      ],
-    );
-  }
+  
 
   _buildBody() {
     return BlocBuilder<RemoteProductsBloc, RemoteProductsState>(
@@ -49,8 +33,6 @@ class ProductsScreen extends StatelessWidget {
           return ListView.builder(
             itemBuilder: (context, index) {
               return GestureDetector(
-                  onTap: () => context.push(AppRouter.productsDetail,
-                      extra: state.products![index]),
                   child: ProductsWidget(product: state.products![index]));
             },
             itemCount: state.products!.length,

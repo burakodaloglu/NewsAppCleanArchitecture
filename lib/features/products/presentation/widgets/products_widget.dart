@@ -1,7 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:ionicons/ionicons.dart';
 
+import '../../../../core/util/navigation/router.dart';
 import '../../domain/entities/products.dart';
 
 class ProductsWidget extends StatefulWidget {
@@ -18,20 +21,24 @@ class _ProductsWidgetState extends State<ProductsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        children: [
-          Row(
-            children: [
-              _buildImage(context),
-              Expanded(
-                child: _buildTitleAndDescription(context),
-              ),
-            ],
-          ),
-          const SizedBox(height: 16),
-        ],
+    return GestureDetector(
+      onTap: () =>
+          context.push(AppRouter.productsDetail, extra: widget.product),
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                _buildImage(context),
+                Expanded(
+                  child: _buildTitleAndDescription(context),
+                ),
+              ],
+            ),
+            const SizedBox(height: 16),
+          ],
+        ),
       ),
     );
   }
@@ -47,9 +54,10 @@ class _ProductsWidgetState extends State<ProductsWidget> {
             width: MediaQuery.of(context).size.width / 3,
             height: MediaQuery.of(context).size.width / 3,
             decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.08),
                 image:
-                    DecorationImage(image: imageProvider, fit: BoxFit.cover)),
+                DecorationImage(image: imageProvider, fit: BoxFit.contain)
+
+            ),
           ),
         ),
       ),
@@ -132,7 +140,7 @@ class _ProductsWidgetState extends State<ProductsWidget> {
             Row(
               children: [
                 const Icon(
-                  Icons.money,
+                  Ionicons.cash_outline,
                   size: 16,
                 ),
                 const SizedBox(width: 4),

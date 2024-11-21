@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:products_app_clean_architecture/features/products/presentation/widgets/appbar_widget.dart';
 import '../../../../../injection_container.dart';
 import '../../../domain/entities/products.dart';
 import '../../bloc/products/local/local_products_bloc.dart';
@@ -9,31 +10,18 @@ import '../../bloc/products/local/local_products_event.dart';
 class ProductDetailScreen extends StatelessWidget {
   final ProductsEntity product;
 
-  const ProductDetailScreen({Key? key, required this.product}) : super(key: key);
+  const ProductDetailScreen({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => sl<LocalProductsBloc>(),
-      child: Scaffold(
-        appBar: _buildAppBar(context),
-        body: _buildBody(),
-        floatingActionButton: _buildAddToCartButton(context),
-      ),
-    );
-  }
-
-  PreferredSizeWidget _buildAppBar(BuildContext context) {
-    return AppBar(
-      title: Text(
-        product.title,
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-        style: const TextStyle(fontSize: 18),
-      ),
-      leading: IconButton(
-        icon: const Icon(Ionicons.chevron_back, color: Colors.black),
-        onPressed: () => Navigator.pop(context),
+      child: Flexible(
+        child: Scaffold(
+          appBar: AppbarWidget(title: product.title),
+          body: _buildBody(),
+          floatingActionButton: _buildAddToCartButton(context),
+        ),
       ),
     );
   }
@@ -55,16 +43,19 @@ class ProductDetailScreen extends StatelessWidget {
 
   Widget _buildProductImage() {
     return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8), // Kenar boşlukları
       width: double.infinity,
       height: 300,
       decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
         image: DecorationImage(
           image: NetworkImage(product.image),
-          fit: BoxFit.cover,
+          fit: BoxFit.contain,
         ),
       ),
     );
   }
+
 
   Widget _buildProductDetails() {
     return Padding(

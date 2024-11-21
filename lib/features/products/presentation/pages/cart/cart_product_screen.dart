@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:products_app_clean_architecture/features/products/domain/entities/products.dart';
 import 'package:products_app_clean_architecture/features/products/presentation/bloc/products/local/local_products_event.dart';
 import 'package:products_app_clean_architecture/features/products/presentation/bloc/products/local/local_products_state.dart';
+import 'package:products_app_clean_architecture/features/products/presentation/widgets/appbar_widget.dart';
 import 'package:products_app_clean_architecture/features/products/presentation/widgets/cart_widget.dart';
 import 'package:products_app_clean_architecture/features/products/presentation/widgets/products_widget.dart';
 
@@ -20,13 +21,8 @@ class CartProductScreen extends StatelessWidget {
       sl<LocalProductsBloc>()
         ..add(const GetSavedProducts()),
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            "Cart",
-            style: TextStyle(color: Colors.black),
-          ),
-        ),
         body: _buildBody(),
+        appBar: const AppbarWidget(title: "Cart"),
       ),
     );
   }

@@ -1,7 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../core/util/navigation/router.dart';
 import '../../domain/entities/products.dart';
 
 class CartWidget extends StatelessWidget {
@@ -22,21 +24,24 @@ class CartWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        children: [
-          Row(
-            children: [
-              _buildImage(context),
-              Expanded(
-                child: _buildTitleAndDetails(context),
-              ),
-              if (isRemovable) _buildRemoveButton(context),
-            ],
-          ),
-          const SizedBox(height: 16),
-        ],
+    return GestureDetector(
+      onTap: ()=> context.push(AppRouter.productsDetail, extra: product),
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                _buildImage(context),
+                Expanded(
+                  child: _buildTitleAndDetails(context),
+                ),
+                if (isRemovable) _buildRemoveButton(context),
+              ],
+            ),
+            const SizedBox(height: 16),
+          ],
+        ),
       ),
     );
   }
@@ -52,9 +57,8 @@ class CartWidget extends StatelessWidget {
             width: MediaQuery.of(context).size.width / 3,
             height: MediaQuery.of(context).size.width / 3,
             decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.08),
                 image:
-                DecorationImage(image: imageProvider, fit: BoxFit.cover)),
+                DecorationImage(image: imageProvider, fit: BoxFit.contain)),
           ),
         ),
       ),
