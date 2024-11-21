@@ -115,10 +115,12 @@ This project leverages the following dependencies and tools:
 
 ## **Preview**
 ### **Screenshots**
-![Screenshot 1](https://github.com/user-attachments/assets/8e6333a1-8ada-48ef-8abe-34628e27bc46)  
-![Screenshot 2](https://github.com/user-attachments/assets/d26d4eae-9061-49aa-86da-be7d5b66ac79)  
-![Screenshot 3](https://github.com/user-attachments/assets/0ee40356-4f9c-4ffb-b77d-f78ba0d42779)  
-![Screenshot 4](https://github.com/user-attachments/assets/55227359-2015-477b-9fab-13a0ef5d0fc0)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/8e6333a1-8ada-48ef-8abe-34628e27bc46" width="200" height="400">
+  <img src="https://github.com/user-attachments/assets/d26d4eae-9061-49aa-86da-be7d5b66ac79" width="200" height="400">
+  <img src="https://github.com/user-attachments/assets/0ee40356-4f9c-4ffb-b77d-f78ba0d42779" width="200" height="400">
+  <img src="https://github.com/user-attachments/assets/55227359-2015-477b-9fab-13a0ef5d0fc0" width="200" height="400">
+</p>
 
 ## **Getting Started**
 
