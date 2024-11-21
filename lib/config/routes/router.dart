@@ -4,10 +4,10 @@ import 'package:go_router/go_router.dart';
 import 'package:products_app_clean_architecture/features/products/presentation/pages/cart/cart_product_screen.dart';
 import 'package:products_app_clean_architecture/features/products/presentation/pages/home/products_screen.dart';
 
-import '../../../features/products/domain/entities/products.dart';
-import '../../../features/products/presentation/bloc/products/local/local_products_bloc.dart';
-import '../../../features/products/presentation/pages/detail/product_detail_screen.dart';
-import '../../../injection_container.dart';
+import '../../features/products/domain/entities/products.dart';
+import '../../features/products/presentation/bloc/products/local/local_products_bloc.dart';
+import '../../features/products/presentation/pages/detail/product_detail_screen.dart';
+import '../../injection_container.dart';
 
 final _routerKey = GlobalKey<NavigatorState>();
 

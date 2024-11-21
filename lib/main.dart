@@ -5,7 +5,7 @@ import 'package:products_app_clean_architecture/features/products/presentation/b
 import 'package:products_app_clean_architecture/injection_container.dart';
 
 import 'config/theme/app_themes.dart';
-import 'core/util/navigation/router.dart';
+import 'config/routes/router.dart';
 import 'features/products/presentation/bloc/products/local/local_products_bloc.dart';
 
 void main() async {

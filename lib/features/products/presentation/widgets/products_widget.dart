@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ionicons/ionicons.dart';
 
-import '../../../../core/util/navigation/router.dart';
+import '../../../../config/routes/router.dart';
 import '../../domain/entities/products.dart';
 
 class ProductsWidget extends StatefulWidget {

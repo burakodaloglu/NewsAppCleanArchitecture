@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:products_app_clean_architecture/core/util/navigation/router.dart';
+import 'package:products_app_clean_architecture/config/routes/router.dart';
 import 'package:products_app_clean_architecture/features/products/presentation/bloc/products/remote/remote_products_bloc.dart';
 import 'package:products_app_clean_architecture/features/products/presentation/widgets/appbar_widget.dart';
 import 'package:products_app_clean_architecture/features/products/presentation/widgets/products_widget.dart';
